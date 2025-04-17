@@ -10,11 +10,14 @@ export const meta: MetaFunction = () => {
 };
 
 export const loader = async () => {
-  const response = await fetch(
-    "https://koji-book.vercel.app/api/recipes?page=0"
-  );
+  const response = await fetch("https://koji-book.vercel.app/api/recipes");
   const recipes = await response.json();
-  return recipes;
+  return new Response(JSON.stringify(recipes), {
+    headers: {
+      "Content-Type": "application/json",
+      "Cache-Control": "public, max-age=300",
+    },
+  });
 };
 
 export default function Recipes() {
