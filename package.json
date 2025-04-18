@@ -11,12 +11,17 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.0.1",
     "@remix-run/node": "^2.16.5",
     "@remix-run/react": "^2.16.5",
     "@remix-run/serve": "^2.16.5",
+    "@supabase/supabase-js": "^2.49.4",
     "isbot": "^4.1.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.55.0",
+    "react-hot-toast": "^2.5.2",
+    "zod": "^3.24.3"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.16.5",
