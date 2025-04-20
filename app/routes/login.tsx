@@ -4,7 +4,7 @@ import { Button } from "~/components/Button";
 import { schema, useLoginForm } from "~/hooks/useLoginForm";
 import { Toaster } from "react-hot-toast";
 import { json, Link, useActionData, useNavigate } from "@remix-run/react";
-import { supabase } from "~/utils/supabase";
+import { supabaseServer } from "~/utils/supabase.server";
 import { ActionFunctionArgs } from "@remix-run/node";
 import { useEffect } from "react";
 type ActionResponse = {
@@ -26,7 +26,11 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
   const { email, password } = result.data;
 
-  const { error } = await supabase.auth.signInWithPassword({ email, password });
+  const { error, data } = await supabaseServer.auth.signInWithPassword({
+    email,
+    password,
+  });
+  console.log(error, data);
   if (error) {
     return json<ActionResponse>({ message: error.message }, { status: 401 });
   }
