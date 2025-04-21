@@ -1,3 +1,4 @@
+import { Link } from "@remix-run/react";
 import { RecipeArticleWithActions } from "~/types/recipes/IndexResponse";
 import { formatSteps } from "~/utils/formatSteps";
 interface Props {
@@ -27,7 +28,12 @@ export const RecipeItem: React.FC<Props> = ({ recipe }) => {
         <h3>〇作り方</h3>
         <div className="line-clamp-3">{formatSteps(recipe.article.tips)}</div>
       </div>
-      {/* <button type="button">材料・作り方を見る</button> */}
+      <Link
+        to={`/recipes/${recipe.article.id}`}
+        className="bg-dark_brown text-white py-2 px-3 rounded-md text-center"
+      >
+        材料・作り方を見る
+      </Link>
     </div>
   );
 };
